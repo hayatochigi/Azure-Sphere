@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AzureSphereBlink",
+    "\\AzureSphereBlink\\HardwareDefinitions",
+    "\\AzureSphereBlink\\HardwareDefinitions\\mt3620_rdb",
+    "\\AzureSphereBlink\\HardwareDefinitions\\mt3620_rdb\\inc",
+    "\\AzureSphereBlink\\HardwareDefinitions\\mt3620_rdb\\inc\\hw"
+  ],
+  "PreviewInSolutionExplorer": false
+}
