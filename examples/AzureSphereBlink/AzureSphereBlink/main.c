@@ -52,7 +52,7 @@ typedef enum {
 
 /// <summary>
 /// LEDコントローラへ渡すデータ構造体
-/// <param name="LEDport">GPIO_OpenAsOutput関数で定義したLED</param>
+/// <param name="LEDport">制御するDIO端子(template_appliance.hで定義)</param>
 /// <param name="span">点滅間隔 (ミリ秒)</param>
 /// </summary>
 struct LED_data {
@@ -66,24 +66,19 @@ int main(void)
     //並列実行用のスレッドとリファレンスを作成
     pthread_t thread_RED,thread_GREEN,thread_BLUE;
     int ret_RED,ret_GREEN,ret_BLUE;
-    
-    // LEDの出力設定を行う。出力プッシュプルモードで初期値はHigh (High = LED OFF状態)
-    int LED1 = GPIO_OpenAsOutput(LED1_RED, GPIO_OutputMode_PushPull, GPIO_Value_Low);
-    int LED2 = GPIO_OpenAsOutput(LED2_GREEN, GPIO_OutputMode_PushPull, GPIO_Value_Low);
-    int LED3 = GPIO_OpenAsOutput(LED3_BLUE, GPIO_OutputMode_PushPull, GPIO_Value_High);
-
+ 
 #pragma region Define Data to LED Controller
     // LEDコントローラーへ渡すデータを定義
     struct LED_data RED_data;
-    RED_data.LEDport = LED1;
+    RED_data.LEDport = LED1_RED;
     RED_data.span = 200;
 
     struct LED_data GREEN_data;
-    GREEN_data.LEDport = LED2;
+    GREEN_data.LEDport = LED2_GREEN;
     GREEN_data.span = 400;
 
     struct LED_data BLUE_data;
-    BLUE_data.LEDport = LED3;
+    BLUE_data.LEDport = LED3_BLUE;
     BLUE_data.span = 800;
 #pragma endregion    
 
@@ -112,11 +107,14 @@ int main(void)
 /// 引数は構造体のポインタで渡されます。
 /// </summary>
 void LED_Controller(struct LED_data *arg){
+    int LED = GPIO_OpenAsOutput(arg->LEDport, GPIO_OutputMode_PushPull, GPIO_Value_Low);
     struct timespec sleepTime = { .tv_sec = 0, .tv_nsec = arg->span * ms2ns };
+
+    // 無限ループ内で、LEDのON/OFFを指定した間隔で繰り返す。
     while (true) {
-        GPIO_SetValue(arg->LEDport, GPIO_Value_Low);
+        GPIO_SetValue(LED, GPIO_Value_Low);
         nanosleep(&sleepTime, NULL);
-        GPIO_SetValue(arg->LEDport, GPIO_Value_High);
+        GPIO_SetValue(LED, GPIO_Value_High);
         nanosleep(&sleepTime, NULL);
     }
 }
