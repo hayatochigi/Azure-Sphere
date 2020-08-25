@@ -1,0 +1,22 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_Simple_ADC",
+  "ComponentId": "2ee4a18b-e6e6-44a2-91cd-730e1210adce",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "Adc": [ "$ADC" ],
+    "AllowedApplicationConnections": []
+
+  },
+  "ApplicationType": "Default"
+}
+
+
+// https://docs.microsoft.com/ja-jp/azure-sphere/app-development/app-manifest
+// 高度なアプリケーションでは、ハードウェア定義ヘッダー ファイルで宣言されている周辺機器名を指定します。
+// ハードウェア定義の例: "Adc": [ "$MT3620_RDB_ADC_CONTROLLER0" ] 
+
+
+// mt3620.hに記載あるコメントによると、
+// "MT3620 ADC CHANNEL 0, it must not be used as a peripheral in app_manifest.json"
