@@ -1,5 +1,9 @@
 ﻿#include <stdio.h>
 // NULL is defined in "stdio.h"
+
+// Applibs eventloop.h
+// https://docs.microsoft.com/ja-jp/azure-sphere/reference/applibs-reference/applibs-eventloop/eventloop-overview
+
 #include <applibs/log.h>
 #include <applibs/eventloop.h>
 #include <sys/timerfd.h>
@@ -16,8 +20,15 @@ int main(void)
         Log_Debug("Error in EventLoop_Create");
     }
 
-    EventLoop_RegisterIo(myEvent, polling_t, LogWrite);
-    
+    int EventDes = EventLoop_GetWaitDescriptor(myEvent);
+    if (EventDes == -1) {
+        Log_Debug("Failed EventLoop_GetWaitDescriptor");
+    }
+    else{
+        Log_Debug("EventLoop Description is %d", EventDes);
+    }
+
+    EventLoop_RegisterIo(myEvent, NULL,(EventLoop_IoEvents)1,(void *)LogWrite,NULL);
 
     EventLoop_Close(myEvent);
 
@@ -25,5 +36,8 @@ int main(void)
 }
 
 int LogWrite() {
+    
+    Log_Debug("EVENT FIRED");
+
     return 0;
 }
