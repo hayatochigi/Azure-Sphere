@@ -1,0 +1,11 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_EventLoop",
+  "ComponentId": "e4fddcd3-af8b-4145-abe9-51cf8c7857e7",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": []
+  },
+  "ApplicationType": "Default"
+}
