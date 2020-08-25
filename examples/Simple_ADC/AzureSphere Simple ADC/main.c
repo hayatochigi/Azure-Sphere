@@ -9,9 +9,6 @@
 #define RefVolt 2.5
 #define sampMaxVolt 2.5
 
-int InitADC(ADC_ChannelId);
-
-
 int main(void)
 {   
     // https://docs.microsoft.com/ja-jp/azure-sphere/reference/applibs-reference/applibs-adc/function-adc-open
@@ -48,11 +45,5 @@ int main(void)
         nanosleep(&sleepTime, NULL);
 
     }
-    return 0;
-}
-
-
-int InitADC(ADC_ChannelId adc_select) {
-
     return 0;
 }
