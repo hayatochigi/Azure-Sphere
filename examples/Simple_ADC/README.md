@@ -71,6 +71,6 @@ int main(void)
 ```
 
 <p align="center">
-  <img width="600" src="https://github.com/hayatochigi/images/blob/master/Azure%20Sphere%20Example/Azure%20Sphere%20-%20ADC%20Result.png">
+  <img width="800" src="https://github.com/hayatochigi/images/blob/master/Azure%20Sphere%20Example/Azure%20Sphere%20-%20ADC%20Result.png">
 </p>
 
