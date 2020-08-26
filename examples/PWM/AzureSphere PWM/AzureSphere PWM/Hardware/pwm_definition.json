@@ -1,0 +1,29 @@
+{
+  "Metadata": {
+    "Type": "Azure Sphere Hardware Definition",
+    "Version": 1
+  },
+  "Description": {
+    "Name": "MT3620 PWM",
+    "MainCoreHeaderFileTopContent": [
+      "/* Copyright (c) <vendor name> All rights reserved.",
+      "   <vendor licensing information, if any> */",
+      "",
+      "// This header contains the peripheral pinout definitions for the",
+      "// <name of board or module>"
+    ]
+  },
+  "Imports": [
+
+    { "Path": "mt3620_rdb.json" }
+
+  ],
+  "Peripherals": [
+    {
+      "Name": "LED_PWM",
+      "Type": "Pwm",
+      "Mapping": "MT3620_RDB_LED_PWM_CONTROLLER2",
+      "Comment": "PWM Controller connected to LED"
+    }
+  ]
+}

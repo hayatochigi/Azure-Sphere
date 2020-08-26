@@ -1,0 +1,12 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_PWM",
+  "ComponentId": "7acfabb2-0b88-4180-bcd7-8d1552f3f791",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "Pwm": [ "$LED_PWM" ]
+  },
+  "ApplicationType": "Default"
+}
