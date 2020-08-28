@@ -1,0 +1,11 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_wolfMQTT",
+  "ComponentId": "f861afac-f92c-44c3-adb3-f8f3c589f8a6",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": []
+  },
+  "ApplicationType": "Default"
+}
