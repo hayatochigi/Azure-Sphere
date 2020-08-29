@@ -1,0 +1,4 @@
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereBlink/AzureSphereBlink/out/ARM-Debug/CMakeFiles/AzureSphereBlink.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereBlink/AzureSphereBlink/out/ARM-Debug/CMakeFiles/MakeImage.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereBlink/AzureSphereBlink/out/ARM-Debug/CMakeFiles/edit_cache.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereBlink/AzureSphereBlink/out/ARM-Debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,12 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereSimple_ADC",
+  "ComponentId": "3e400c5f-9ab0-460d-9529-cdf91981b845",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "Gpio": [ "MT3620_RDB_ADC_CONTROLLER0"]
+  },
+  "ApplicationType": "Default"
+}
