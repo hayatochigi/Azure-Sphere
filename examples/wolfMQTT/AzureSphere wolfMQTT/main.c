@@ -20,15 +20,15 @@
 #define CLIENT_ID "fnaothi0"
 
 // From ThingSpesk Settings
-#define HOST "mqtt.thingspeak.com"              // ThingSpeak™のMQTT ブローカーはmqtt.thingspeak.com URL上にある
-#define PORT 1883                           // ポートは1883 https://jp.mathworks.com/help/thingspeak/mqtt-basics.html
-#define USERNAME "emboar"                   // My Profile page
+#define HOST "mqtt.thingspeak.com"              // ThingSpeak Broker URL
+#define PORT 1883                           // MQTT Default Port 1883 https://jp.mathworks.com/help/thingspeak/mqtt-basics.html
+#define USERNAME "emboar"                   // From my Profile page
 #define PASSWORD "63Y18CJ1IU7LHNLR"         // Change this your MQTT API Key from Account > MyProfile.
-#define WRITE_API_KEY "EFBCFPTRE4Z761CE"    // My Channels > User Channel > API Keys 
+#define WRITE_API_KEY "8HK9Q8SVUOA4AZMH"    // My Channels > User Channel > API Keys 
 #define ChannelID "1117561"                 // My Channels > User Channel > Channel Settings
 
 /// <summary>
-/// MqttClient関数実行時に呼び出されるMQTTCallback関数
+/// MQTT Callback Function (At this moment, this is NOP)
 /// </summary>
 static int mqttclient_message_cb(MqttClient* client, MqttMessage* msg, byte msg_new, byte msg_done)
 {
@@ -48,52 +48,49 @@ int main(void){
     MqttNet myMqttNet;
     byte* tx_buf = NULL, * rx_buf = NULL;
  
-    // 送受信バッファを確保
+    // Send & Receive Buffer
     tx_buf = malloc(MAX_BUFFER_SIZE);
     rx_buf = malloc(MAX_BUFFER_SIZE);
 
-    // MqttNetはConnect, Read, Write, Disconnectにおけるネットワークコールバック関数を定義する。
+    // Define calback functions when "CONNECT", "READ", "WRITE", "DISCONNECT" method is called.
     myMqttNet.connect = mqttclient_message_cb;
     myMqttNet.read = mqttclient_message_cb;
     myMqttNet.write = mqttclient_message_cb;
     myMqttNet.disconnect = mqttclient_message_cb;
 
 #pragma region Initialize
-    // ドキュメント手順3: MqttClient_Initを呼び出す
-    // MqttClient引数は初期化されていなくてよい
+    // Doc Step3: Call MqttClient_Init
+    // MqttClient parameter could be empty.
     result = MqttClient_Init(&myMqttClient, &myMqttNet, mqttclient_message_cb,
         tx_buf, MAX_BUFFER_SIZE, rx_buf, MAX_BUFFER_SIZE, DEFAULT_CMD_TIMEOUT_MS);
     ErrorHandler("MqttClient_Init", result);
 
-    // ドキュメント手順4: ネットワーク上のブローカーと接続するためにMqttClient_NetConnectを呼び出す
+    // Doc Step4: Call MqttClient_NetConnect to establish a communication between a MQTT Broker
     /* cannot use TLS unless ENABLE_MQTT_TLS is defined */
-    // TLS接続の場合はコールバック関数で証明書を指定する
+    /* If TLS is required, specify certificated document in callback function */
     result = MqttClient_NetConnect(&myMqttClient, HOST, PORT, BROCKER_TIMEOUT, false, mqttclient_tls_cb);
     ErrorHandler("MqttClient_NetConnect", result);
 
-    // ドキュメント手順5: MqttConnect構造体を作成して、MqttClient_Connectを呼び出す    
+    // Doc Step5: Create Mqtt Structure and call MqttClient_Connect   
     MqttConnect ConnectInfo;
     ConnectInfo.stat = MQTT_MSG_BEGIN;
  
-    // キープアライブタイマーは、クライアントから一定時間のメッセージがない場合、
-    // サーバーがそのクライアントとの接続を切断する際の時間です。
+    // Keep alive ensures that the connection between the brokerand client is 
+    // still openand that the brokerand the client are aware of being connected.
     ConnectInfo.keep_alive_sec = 30;
-    // クライアントが切断されたときに、サーバーがそのクライアントを覚えているか指定します。
-    // true = 覚えていない
-    // false = 覚えている
+    // When the clean session flag is set to true, the client does not want a persistent session.
+    // If the client disconnects for any reason, all informationand messages that are queued from a previous persistent session are lost.
     ConnectInfo.clean_session = true;
     ConnectInfo.client_id = CLIENT_ID;
 
-    // プロトコルバージョンはv3.1.1を使用するため、定義コメントにある通りデフォルトの4を指定
+    // Protocol is v3.1.1. Use "4". This is written in a comment.
     ConnectInfo.protocol_level = 4;
 
-    // Last Will & Testament (遺言メッセージ)
-    // 予期しないクライアントの切断時に、指定したトピックへ自動的にメッセージを送信する
-    // クライアントは事前にlwtメッセージをサーバーへ登録しておく
+    // Last Will & Testament
+    // I don't want, disable.
     ConnectInfo.enable_lwt = false;
     //ConnectInfo.lwt_msg;
 
-    // 接続情報
     ConnectInfo.username = USERNAME;
     ConnectInfo.password = PASSWORD;
 
@@ -109,18 +106,19 @@ int main(void){
 #pragma endregion
       
 #pragma region Publish
-    // メッセージをパブリッシュする
 
     MqttPublish myPublish;
-    // retain: あとからサブスクライブしてきた場合にも送れるように、最後のメッセージを保持する
+    // retain: Retain last sent message.
     myPublish.retain = true;
-    // qos: Quality Of Service。このサンプルではパブリッシュの確認は不要なのでQos0で定義する
+    // qos: Quality Of Service。No Confirmation is required.
     myPublish.qos = MQTT_QOS_0;
     myPublish.duplicate = true;
 
-    // topic_name: トピック名。使用するBrokerのマニュアルを参照
-    //myPublish.topic_name = "channels/" + ChannelID + "/publish/" + WRITE_API_KEY;
-    myPublish.topic_name = "chanels/1126475/public/fields/field1/Y5WYP94SZJPROC8Q";
+    // Create a topic string and publish data to ThingSpeak channel feed. 
+    // (Example)
+    // String topicString = "channels/" + String(channelID) + "/publish/" + String(writeAPIKey);
+    // https://www.mathworks.com/help/thingspeak/use-arduino-client-to-publish-to-a-channel.html?requestedDomain=
+    myPublish.topic_name = "channels/1117561/public/fields/field1/8HK9Q8SVUOA4AZMH";
 
     myPublish.packet_id = 0;
     char message[] = "3";
@@ -148,10 +146,10 @@ int main(void){
 }
 
 /// <summary>
-/// MQTT関数の実行結果を受け取り、成功コード以外の場合はエラーメッセージを返します。
+/// Receive return from MQTT functions. If it isn't "SUCCESS", show the error information.
 /// </summary>
-/// <param name="func_name">対象の関数名</param>
-/// <param name="error_code">関数が返した状態コード</param>
+/// <param name="func_name">Function Name</param>
+/// <param name="error_code">Status Code</param>
 void ErrorHandler(char func_name[], enum MqttPacketResponseCodes error_code) {
     if (error_code != MQTT_CODE_SUCCESS) {
         printf("%s: %s (%d)\n", func_name, MqttClient_ReturnCodeToString(error_code), error_code);
