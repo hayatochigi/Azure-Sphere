@@ -1,4 +1,0 @@
-C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC/out/ARM-Debug/CMakeFiles/AzureSphereSimple_ADC.dir
-C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC/out/ARM-Debug/CMakeFiles/MakeImage.dir
-C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC/out/ARM-Debug/CMakeFiles/edit_cache.dir
-C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC/out/ARM-Debug/CMakeFiles/rebuild_cache.dir
