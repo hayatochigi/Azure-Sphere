@@ -1,0 +1,9 @@
+# ninja log v5
+3	424	619984307	CMakeFiles/AzureSphereSimple_ADC.dir/main.c.obj	bcf45f733c4d344d
+429	968	619984307	AzureSphereSimple_ADC.out	8bb9f0cef2fcfce7
+969	1300	619984308	approotAzureSphereSimple_ADC/app_manifest.json	827f7229fcd22cbe
+980	1401	619984308	approotAzureSphereSimple_ADC/bin/app	a08349cab5b3b138
+1402	3355	619984310	AzureSphereSimple_ADC.imagepackage	aab75808db36702d
+9	265	619984601	approotAzureSphereSimple_ADC/app_manifest.json	827f7229fcd22cbe
+9	254	619984647	approotAzureSphereSimple_ADC/app_manifest.json	827f7229fcd22cbe
+9	255	619984732	approotAzureSphereSimple_ADC/app_manifest.json	827f7229fcd22cbe

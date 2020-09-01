@@ -1,0 +1,4 @@
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphere MQTT/AzureSphere MQTT/out/ARM-Debug/CMakeFiles/edit_cache.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphere MQTT/AzureSphere MQTT/out/ARM-Debug/CMakeFiles/AzureSphere_MQTT.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphere MQTT/AzureSphere MQTT/out/ARM-Debug/CMakeFiles/MakeImage.dir
+C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphere MQTT/AzureSphere MQTT/out/ARM-Debug/CMakeFiles/rebuild_cache.dir

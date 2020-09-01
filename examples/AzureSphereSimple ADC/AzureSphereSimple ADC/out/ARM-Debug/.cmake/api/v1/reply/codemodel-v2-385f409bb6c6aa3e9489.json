@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "AzureSphereSimple_ADC",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AzureSphereSimple_ADC::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AzureSphereSimple_ADC-Debug-b53774f1ad6067afc069.json",
+					"name" : "AzureSphereSimple_ADC",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "MakeImage::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MakeImage-Debug-98fa64dea6062178a046.json",
+					"name" : "MakeImage",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC/out/ARM-Debug",
+		"source" : "C:/Users/hayat/Documents/GitHub/Azure/Azure/examples/AzureSphereSimple ADC/AzureSphereSimple ADC"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
