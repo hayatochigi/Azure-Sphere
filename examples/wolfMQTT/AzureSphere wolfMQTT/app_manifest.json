@@ -5,7 +5,8 @@
   "EntryPoint": "/bin/app",
   "CmdArgs": [],
   "Capabilities": {
-    "AllowedApplicationConnections": []
+    "AllowedConnections": [ "mqtt.thingspeak.com" ],
+    "AllowedTcpServerPorts": [ 1024, 1883, 65535 ]
   },
   "ApplicationType": "Default"
 }

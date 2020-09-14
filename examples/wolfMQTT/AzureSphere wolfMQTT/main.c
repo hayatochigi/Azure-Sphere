@@ -23,7 +23,7 @@
 #define HOST "mqtt.thingspeak.com"              // ThingSpeak Broker URL
 #define PORT 1883                           // MQTT Default Port 1883 https://jp.mathworks.com/help/thingspeak/mqtt-basics.html
 #define USERNAME "emboar"                   // From my Profile page
-#define PASSWORD "63Y18CJ1IU7LHNLR"         // Change this your MQTT API Key from Account > MyProfile.
+#define PASSWORD "YLW76Y8V68WPAMZS"         // Change this your MQTT API Key from Account > MyProfile.
 #define WRITE_API_KEY "8HK9Q8SVUOA4AZMH"    // My Channels > User Channel > API Keys 
 #define ChannelID "1117561"                 // My Channels > User Channel > Channel Settings
 
@@ -34,9 +34,6 @@ static int mqttclient_message_cb(MqttClient* client, MqttMessage* msg, byte msg_
 {
     return MQTT_CODE_SUCCESS;
 }
-static int mqttclient_tls_cb(MqttClient* client) {
-    return MQTT_CODE_SUCCESS;
-}
 
 void ErrorHandler(char func_name[], enum MqttPacketResponseCodes error_code);
 
@@ -45,7 +42,9 @@ int main(void){
     int result = 0;
 
     MqttClient myMqttClient;
+    memset(&myMqttClient, 0, sizeof(myMqttClient));
     MqttNet myMqttNet;
+    memset(&myMqttNet, 0, sizeof(myMqttNet));
     byte* tx_buf = NULL, * rx_buf = NULL;
  
     // Send & Receive Buffer
@@ -68,11 +67,12 @@ int main(void){
     // Doc Step4: Call MqttClient_NetConnect to establish a communication between a MQTT Broker
     /* cannot use TLS unless ENABLE_MQTT_TLS is defined */
     /* If TLS is required, specify certificated document in callback function */
-    result = MqttClient_NetConnect(&myMqttClient, HOST, PORT, BROCKER_TIMEOUT, false, mqttclient_tls_cb);
+    result = MqttClient_NetConnect(&myMqttClient, HOST, PORT, BROCKER_TIMEOUT, false, NULL);
     ErrorHandler("MqttClient_NetConnect", result);
 
     // Doc Step5: Create Mqtt Structure and call MqttClient_Connect   
     MqttConnect ConnectInfo;
+    memset(&ConnectInfo, 0, sizeof(ConnectInfo));
     ConnectInfo.stat = MQTT_MSG_BEGIN;
  
     // Keep alive ensures that the connection between the brokerand client is 
@@ -108,6 +108,7 @@ int main(void){
 #pragma region Publish
 
     MqttPublish myPublish;
+    memset(&myPublish, 0, sizeof(myPublish));
     // retain: Retain last sent message.
     myPublish.retain = true;
     // qos: Quality Of Service。No Confirmation is required.
@@ -118,10 +119,10 @@ int main(void){
     // (Example)
     // String topicString = "channels/" + String(channelID) + "/publish/" + String(writeAPIKey);
     // https://www.mathworks.com/help/thingspeak/use-arduino-client-to-publish-to-a-channel.html?requestedDomain=
-    myPublish.topic_name = "channels/1117561/public/fields/field1/8HK9Q8SVUOA4AZMH";
+    myPublish.topic_name = "channels/1126475/publish/fields/field1/B3VHA7EQ4L8HN9NS";
 
     myPublish.packet_id = 0;
-    char message[] = "3";
+    char message[] = "8";
     myPublish.buffer = message;
     myPublish.buffer_len = sizeof(message);
     
