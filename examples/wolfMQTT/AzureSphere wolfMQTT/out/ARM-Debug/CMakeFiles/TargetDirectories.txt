@@ -1,0 +1,5 @@
+C:/Users/hayat/Documents/GitHub/Azure/examples/wolfMQTT/AzureSphere wolfMQTT/out/ARM-Debug/CMakeFiles/MQTT.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/wolfMQTT/AzureSphere wolfMQTT/out/ARM-Debug/CMakeFiles/MakeImage.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/wolfMQTT/AzureSphere wolfMQTT/out/ARM-Debug/CMakeFiles/AzureSphere_wolfMQTT.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/wolfMQTT/AzureSphere wolfMQTT/out/ARM-Debug/CMakeFiles/edit_cache.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/wolfMQTT/AzureSphere wolfMQTT/out/ARM-Debug/CMakeFiles/rebuild_cache.dir

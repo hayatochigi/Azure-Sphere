@@ -1,0 +1,1 @@
+{"SchemaVersion":1,"Name":"AzureSphere_wolfMQTT","ComponentId":"f861afac-f92c-44c3-adb3-f8f3c589f8a6","EntryPoint":"/bin/app","CmdArgs":[],"Capabilities":{"AllowedConnections":["mqtt.thingspeak.com"],"AllowedTcpServerPorts":[1024,1883,65535]},"ApplicationType":"Default","TargetApplicationRuntimeVersion":6}
