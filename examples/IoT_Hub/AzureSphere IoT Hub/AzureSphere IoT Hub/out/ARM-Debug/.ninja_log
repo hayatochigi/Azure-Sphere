@@ -1,0 +1,15 @@
+# ninja log v5
+4	878	622205506	CMakeFiles/AzureSphere_IoT_Hub.dir/main.c.obj	2f20535875893e79
+881	1284	622205507	AzureSphere_IoT_Hub.out	52e85b91e18d0118
+1285	1785	622205507	approotAzureSphere_IoT_Hub/app_manifest.json	da1688009c8f4105
+1296	1842	622205507	approotAzureSphere_IoT_Hub/bin/app	3e183ee47f0ab92b
+1843	3628	622205509	AzureSphere_IoT_Hub.imagepackage	6a90e4a33b80dcd3
+14	901	622205593	CMakeFiles/AzureSphere_IoT_Hub.dir/main.c.obj	2f20535875893e79
+902	1435	622205593	AzureSphere_IoT_Hub.out	52e85b91e18d0118
+1436	1887	622205594	approotAzureSphere_IoT_Hub/app_manifest.json	da1688009c8f4105
+1443	1981	622205594	approotAzureSphere_IoT_Hub/bin/app	3e183ee47f0ab92b
+1982	3971	622205596	AzureSphere_IoT_Hub.imagepackage	6a90e4a33b80dcd3
+9	292	622205690	approotAzureSphere_IoT_Hub/app_manifest.json	da1688009c8f4105
+292	2092	622205692	AzureSphere_IoT_Hub.imagepackage	6a90e4a33b80dcd3
+10	283	622205772	approotAzureSphere_IoT_Hub/app_manifest.json	da1688009c8f4105
+284	2131	622205774	AzureSphere_IoT_Hub.imagepackage	6a90e4a33b80dcd3

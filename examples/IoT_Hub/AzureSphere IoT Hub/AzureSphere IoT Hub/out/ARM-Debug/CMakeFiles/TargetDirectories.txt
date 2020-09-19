@@ -1,0 +1,4 @@
+C:/Users/hayat/Documents/GitHub/Azure/examples/IoT_Hub/AzureSphere IoT Hub/AzureSphere IoT Hub/out/ARM-Debug/CMakeFiles/AzureSphere_IoT_Hub.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/IoT_Hub/AzureSphere IoT Hub/AzureSphere IoT Hub/out/ARM-Debug/CMakeFiles/MakeImage.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/IoT_Hub/AzureSphere IoT Hub/AzureSphere IoT Hub/out/ARM-Debug/CMakeFiles/edit_cache.dir
+C:/Users/hayat/Documents/GitHub/Azure/examples/IoT_Hub/AzureSphere IoT Hub/AzureSphere IoT Hub/out/ARM-Debug/CMakeFiles/rebuild_cache.dir
