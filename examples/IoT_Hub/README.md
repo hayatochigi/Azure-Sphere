@@ -46,3 +46,10 @@ Actions >> Create IoT Hub Listner
 <p align="center">
   <img width="800" src="https://github.com/hayatochigi/images/blob/master/Azure%20Sphere%20Example/Service%20Bus%20Explorer%20Result.png">
 </p>
+
+IoT Hubのビュアーを見ると、きちんとメッセージが消費されていたり接続デバイス数が変化していることが確認できる。
+
+<p align="center">
+  <img width="800" src="https://github.com/hayatochigi/images/blob/master/Azure%20Sphere%20Example/IoT%20Hub%20Viewer.PNG">
+</p>
+
