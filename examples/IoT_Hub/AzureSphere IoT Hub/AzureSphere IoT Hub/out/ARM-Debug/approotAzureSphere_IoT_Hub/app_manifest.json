@@ -1,1 +1,0 @@
-{"SchemaVersion":1,"Name":"AzureSphere_IoT_Hub","ComponentId":"9a60dabb-4287-49bc-bdf9-032ecceea2b5","EntryPoint":"/bin/app","CmdArgs":[],"Capabilities":{"AllowedConnections":["home-monitoring.azure-devices.net","global.azure-devices-provisioning.net"],"DeviceAuthentication":"7c2c0fa6-9a1f-4c02-bea8-17b090d72555"},"ApplicationType":"Default","TargetApplicationRuntimeVersion":6}
