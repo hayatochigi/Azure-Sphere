@@ -1,0 +1,14 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_IoT_Hub",
+  "ComponentId": "9a60dabb-4287-49bc-bdf9-032ecceea2b5",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    // マニフェストにIoT Hubのホスト名と、DPSのグローバルデバイスエンドポイントを記載
+    "AllowedConnections": [ "xxx.azure-devices.net", "global.azure-devices-provisioning.net" ],
+    // テナントIDを記載
+    "DeviceAuthentication": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  },
+  "ApplicationType": "Default"
+}
