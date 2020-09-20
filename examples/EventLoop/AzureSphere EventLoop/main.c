@@ -19,7 +19,7 @@ int main(void)
     static EventLoop *myEvent;
 
     // 少なくとも一方に0以外の値を設定すると、繰り返しタイマーが有効になる
-    // この例では、タイマの満了後、1秒後に次のタイマカウントを開始する
+    // この例では、タイマの満了後、5秒後に次のタイマカウントを開始する
     struct timespec my_interval = { .tv_sec = 5, .tv_nsec = 0 };
     // タイマー満了時間の初期値。10秒後にタイマーは満了する
     struct timespec my_value = { .tv_sec = 10, .tv_nsec = 0 };
@@ -38,7 +38,8 @@ int main(void)
         return errno;
     }
 
-    // 使うことはないけどとりあえず呼んでみる
+    // ディスクリプタを取得。取得したディスクリプタを使うことはないけど、
+    // せっかくなのでとりあえず呼んでみる
     int eventfd = EventLoop_GetWaitDescriptor(myEvent);
     if (eventfd == -1) {
         Log_Debug("Failed EventLoop_GetWaitDescriptor\n");
@@ -49,6 +50,7 @@ int main(void)
         Log_Debug("EventLoop Description is %d\n", eventfd);
     }
 
+    // イベントのソースと、イベントが発生した際に実行するコールバック関数を定義する
     // 作成したEventLoopオブジェクトへのポインタ、イベントソースとなるfd、
     // EventLoop_IoEvents 列挙型で定義したI/Oのビットマスク(下記リンク参照)、CB関数へのポインタ、CTポインタ
     // https://docs.microsoft.com/ja-jp/azure-sphere/reference/applibs-reference/applibs-eventloop/enum-eventloop-ioevents
@@ -58,6 +60,7 @@ int main(void)
         return errno;
     }
 
+    // タイマーを設定する
     // fd, 相対時刻タイマー(0), クロックの現在の値からの相対的な時刻, NULL
     // new_value.it_value のフィールドのうち少なくとも一方に 0 以外の値を設定すると、 タイマーが開始される。
     // https://linuxjm.osdn.jp/html/LDP_man-pages/man2/timerfd_create.2.html

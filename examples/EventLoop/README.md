@@ -6,6 +6,8 @@ https://docs.microsoft.com/ja-jp/azure-sphere/app-development/device-update-defe
 
 Azure Sphereのeventloopを用いて、timerfdからのイベント通知を受信しコールバック関数を呼び出す。
 
+このサンプルでは、プロジェクトを実行して約10秒後にテンション高めの顔文字が表示される。
+
 [Applibs eventloop.h](https://docs.microsoft.com/ja-jp/azure-sphere/reference/applibs-reference/applibs-eventloop/eventloop-overview)
 
 [TIMERFD_CREATE](https://linuxjm.osdn.jp/html/LDP_man-pages/man2/timerfd_create.2.html)
