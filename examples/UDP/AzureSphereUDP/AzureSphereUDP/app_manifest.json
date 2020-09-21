@@ -1,0 +1,13 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereUDP",
+  "ComponentId": "8ca5df9c-913f-43bf-b5ab-2db774f15424",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "192.168.0.110" ],
+    "AllowedUdpServerPorts": [ 61556 ]
+  },
+  "ApplicationType": "Default"
+}
