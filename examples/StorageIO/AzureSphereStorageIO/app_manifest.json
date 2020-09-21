@@ -1,0 +1,15 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereStorageIO",
+  "ComponentId": "20b552a6-c3f1-49d2-8b6e-867f4431cd8f",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    // 変更可能ストレージ (mutable storage) を8KBで作成
+    // このストレージはアプリケーションのコンポーネントIDに紐づけられている点に注意
+    // https://docs.microsoft.com/ja-jp/azure-sphere/app-development/storage
+    "MutableStorage": { "SizeKB": 8 }
+  },
+  "ApplicationType": "Default"
+}
