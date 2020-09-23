@@ -1,0 +1,13 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereTCP",
+  "ComponentId": "199ed589-248b-4bf1-8906-4d1eb6ac3d2d",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "192.168.11.57" ],
+    "AllowedTcpServerPorts": [ 61551]
+  },
+  "ApplicationType": "Default"
+}
