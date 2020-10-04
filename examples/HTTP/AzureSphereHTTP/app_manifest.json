@@ -1,0 +1,12 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereHTTP",
+  "ComponentId": "28d935e6-b980-4c8d-a8a3-73e3cf511d21",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "api.openweathermap.org" ]
+  },
+  "ApplicationType": "Default"
+}
