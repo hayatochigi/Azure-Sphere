@@ -1,0 +1,13 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereMQTT",
+  "ComponentId": "8ac684f7-f687-44ca-8850-616f4a5a7b01",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "mqtt.thingspeak.com" ],
+    "AllowedTcpServerPorts": [ 1883, 8883 ]
+  },
+  "ApplicationType": "Default"
+}
