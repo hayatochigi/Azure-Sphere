@@ -8,6 +8,12 @@ Azure IoT HubとDevice Provisioning Service (DPS)をセットアップする。
 DPSのメリットについてはこちらの方の説明がわかりやすくて好き。
 [IoT Hub Device Provisioning Service とは？超概要](https://qiita.com/mstakaha1113/items/231c859d7427b466d4ad)
 
+DPSを採用することで、デバイスのIoT Hubへの接続をほぼ自動化できる。具体的には、事前にルート証明書をDPSへ登録しておき、
+個々のデバイスの認証には、ルート証明書から派生したリーフ証明書を使用する。ルート証明書がDPSに登録されているので、
+派生したリーフ証明書をそれにより検証し、問題がなければデバイスが登録される。
+
+[デバイス プロビジョニング サービス、x.509 証明書、登録の概要](https://docs.microsoft.com/ja-jp/learn/modules/securely-provision-iot-devices-at-scale-with-device-provisioning-service/3-overview-dps-x509-certificates-enrollments)
+
 ### 1. IoT HubとDPSの作成
 この資料の通り行うだけ。資料わかりやすくて助かります。
 
