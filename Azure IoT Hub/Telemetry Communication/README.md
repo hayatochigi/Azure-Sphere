@@ -3,6 +3,7 @@ Azure IoT Hub‚ÆAzure Sphere MT3620‚ğÚ‘±‚µAƒfƒoƒCƒXtoƒNƒ‰ƒEƒh(D2C)‚Ü‚½‚ÍƒNƒ‰ƒEƒ
 Ú‘±‚É‚ÍDPS‚Íg—p‚¹‚¸AƒfƒoƒCƒX‚ğ’¼ÚIoT Hub‚ÖÚ‘±‚·‚éBDPS‚ğg—p‚·‚éê‡‚Í‚±‚¿‚ç [Azure Sphere IoT Hub Example](https://github.com/hayatochigi/Azure-Sphere/tree/master/examples/IoT%20Hub)
 
 [IoT Hub ‚Å device-to-cloud ‚¨‚æ‚Ñ cloud-to-device ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é](https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-devguide-messaging)
+
 [ƒeƒŒƒƒgƒŠ‚ğ‘—M‚¨‚æ‚ÑóM‚·‚éƒR[ƒh‚ğ‹Lq‚·‚é](https://docs.microsoft.com/ja-jp/learn/modules/remotely-monitor-devices-with-azure-iot-hub/3-write-code-device-telemetry)
 
 MT3620‚©‚çIoT Hub‚Ö‚ÍƒeƒŒƒƒgƒŠ‚ğƒƒbƒZ[ƒW•¶š—ñ‚Æ‚µ‚ÄMQTTƒvƒƒgƒRƒ‹‚Å‘—M‚·‚éBIoT Hub‚©‚çMT3620‚Ö‚ÍAPortalã‚Ìƒ}ƒjƒ…ƒAƒ‹‘€ì‚ÅƒeƒŒƒƒgƒŠ‚ğƒƒbƒZ[ƒW•¶š—ñ‚Æ‚µ‚ÄA‰Á‚¦‚ÄKey-ValueŒ`®‚ÌƒvƒƒpƒeƒB‚ğ‘—M‚·‚éB
