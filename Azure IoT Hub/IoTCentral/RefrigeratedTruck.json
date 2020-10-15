@@ -1,0 +1,280 @@
+{
+  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_4hy:1",
+  "@type": "CapabilityModel",
+  "implements": [
+    {
+      "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_4hy:ql2eru2yt:1",
+      "@type": "InterfaceInstance",
+      "displayName": {
+        "en": "インターフェイス"
+      },
+      "name": "RefrigeratedTruck_3me",
+      "schema": {
+        "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:1",
+        "@type": "Interface",
+        "displayName": {
+          "en": "インターフェイス"
+        },
+        "contents": [
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsTemperature:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Temperature"
+            ],
+            "displayName": {
+              "en": "荷物の温度"
+            },
+            "name": "ContentsTemperature",
+            "schema": "double",
+            "unit": "celsius"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsState:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/State"
+            ],
+            "displayName": {
+              "en": "Contents state"
+            },
+            "name": "ContentsState",
+            "schema": {
+              "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsState:_p5bcupc3:1",
+              "@type": "Enum",
+              "valueSchema": "string",
+              "enumValues": [
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsState:_p5bcupc3:empty:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "empty"
+                  },
+                  "enumValue": "empty",
+                  "name": "empty"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsState:_p5bcupc3:full:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "full"
+                  },
+                  "enumValue": "full",
+                  "name": "full"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:ContentsState:_p5bcupc3:melting:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "melting"
+                  },
+                  "enumValue": "melting",
+                  "name": "melting"
+                }
+              ]
+            }
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:CoolingSystemState:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/State"
+            ],
+            "displayName": {
+              "en": "Cooling system state"
+            },
+            "name": "CoolingSystemState",
+            "schema": {
+              "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:CoolingSystemState:0ti4elgqc:1",
+              "@type": "Enum",
+              "valueSchema": "string",
+              "enumValues": [
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:CoolingSystemState:0ti4elgqc:on:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "on"
+                  },
+                  "enumValue": "on",
+                  "name": "on"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:CoolingSystemState:0ti4elgqc:off:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "off"
+                  },
+                  "enumValue": "off",
+                  "name": "off"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:CoolingSystemState:0ti4elgqc:failed:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "failed"
+                  },
+                  "enumValue": "failed",
+                  "name": "failed"
+                }
+              ]
+            }
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/State"
+            ],
+            "displayName": {
+              "en": "Truck state"
+            },
+            "name": "TruckState",
+            "schema": {
+              "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:1",
+              "@type": "Enum",
+              "valueSchema": "string",
+              "enumValues": [
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:ready:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "ready"
+                  },
+                  "enumValue": "ready",
+                  "name": "ready"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:enroute:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "enroute"
+                  },
+                  "enumValue": "enroute",
+                  "name": "enroute"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:delivering:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "delivering"
+                  },
+                  "enumValue": "delivering",
+                  "name": "delivering"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:returning:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "returning"
+                  },
+                  "enumValue": "returning",
+                  "name": "returning"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:loading:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "loading"
+                  },
+                  "enumValue": "loading",
+                  "name": "loading"
+                },
+                {
+                  "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckState:yrxuzeedvm:dumping:1",
+                  "@type": "EnumValue",
+                  "displayName": {
+                    "en": "dumping"
+                  },
+                  "enumValue": "dumping",
+                  "name": "dumping"
+                }
+              ]
+            }
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:Event:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Event"
+            ],
+            "displayName": {
+              "en": "Event"
+            },
+            "name": "Event",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:Location:1",
+            "@type": [
+              "Telemetry",
+              "SemanticType/Location"
+            ],
+            "displayName": {
+              "en": "Location"
+            },
+            "name": "Location",
+            "schema": "geopoint"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:TruckID:1",
+            "@type": "Property",
+            "displayName": {
+              "en": "Truck ID"
+            },
+            "name": "TruckID",
+            "schema": "string"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:OptimalTemperature:1",
+            "@type": [
+              "Property",
+              "SemanticType/Temperature"
+            ],
+            "displayName": {
+              "en": "Optimal Temperature"
+            },
+            "name": "OptimalTemperature",
+            "writable": true,
+            "schema": "double",
+            "unit": "celsius"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:GoToCustomer:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "durable": false,
+            "request": {
+              "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:GoToCustomer:CustomerID:1",
+              "@type": "SchemaField",
+              "displayName": {
+                "en": "Customer ID"
+              },
+              "name": "CustomerID",
+              "schema": "integer"
+            },
+            "displayName": {
+              "en": "Go to customer"
+            },
+            "name": "GoToCustomer"
+          },
+          {
+            "@id": "urn:refrigeratedTrucksTyusuke:RefrigeratedTruck_3me:Recall:1",
+            "@type": "Command",
+            "commandType": "synchronous",
+            "durable": false,
+            "displayName": {
+              "en": "Recall"
+            },
+            "name": "Recall"
+          }
+        ]
+      }
+    }
+  ],
+  "displayName": {
+    "en": "RefrigeratedTruck"
+  },
+  "@context": [
+    "http://azureiot.com/v1/contexts/IoTModel.json"
+  ]
+}
