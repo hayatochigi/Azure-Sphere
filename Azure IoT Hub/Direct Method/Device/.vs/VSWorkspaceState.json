@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\FanController",
+    "\\FanController\\HardwareDefinitions",
+    "\\FanController\\HardwareDefinitions\\mt3620_rdb",
+    "\\FanController\\HardwareDefinitions\\mt3620_rdb\\inc",
+    "\\FanController\\HardwareDefinitions\\mt3620_rdb\\inc\\hw"
+  ],
+  "SelectedNode": "\\FanController\\CMakeLists.txt",
+  "PreviewInSolutionExplorer": false
+}

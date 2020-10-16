@@ -1,0 +1,14 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "FanController",
+  "ComponentId": "af4abe93-9299-4486-994b-b71501cc6261",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "w-iothub-azsphere.azure-devices.net" ],
+    "Gpio": [ "$FanPort" ],
+    "AllowedTcpServerPorts": [  ]
+  },
+  "ApplicationType": "Default"
+}
