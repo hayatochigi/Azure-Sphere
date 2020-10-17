@@ -10,15 +10,9 @@
 #include <time.h>
 #include <stdio.h>
 
-#define hubHostName "w-iothub-azsphere.azure-devices.net"
-#define ConnectionStr "HostName=w-iothub-azsphere.azure-devices.net;DeviceId=AzMT3620;SharedAccessKey=EKGzxjEFs0u0NlMmoRW/d7eZNR+xWN6DOjVmEJCd7Wk="
-#define deviceId "AzMT3620"
-
-// *************** 関数宣言 *************** //
-bool AzureIoTHubSetup(IOTHUB_DEVICE_CLIENT_LL_HANDLE*);
-static void* GetHeapMessage(const char*, size_t, ...);
-static int DirectMethodCall(const char*, const char*, size_t, char**, size_t*);
-// **************************************** //
+#define hubHostName "xxx.azure-devices.net"
+#define ConnectionStr "HostName=xxx"
+#define deviceId "xxx"
 
 // ファン状態
 enum FanStatus {
@@ -27,9 +21,21 @@ enum FanStatus {
     Fail
 };
 
+// *************** 関数宣言 *************** //
+bool AzureIoTHubSetup(IOTHUB_DEVICE_CLIENT_LL_HANDLE*);
+static void* GetHeapMessage(const char*, size_t, ...);
+static int DirectMethodCall(const char*, const char*, size_t, char**, size_t*, void*);
+
+            /***DIO制御用関数***/
+int InitializeDIO(int);
+int SetDIO(int, enum FanStatus);
+// **************************************** //
+
 int main(void)
 {
-    struct timespec Wait = { .tv_sec = 1, .tv_nsec = 0/*5000000000*/ };
+    struct timespec Wait = { .tv_sec = 0, .tv_nsec = 8000000000 };
+    // DIOを初期化
+    int fdptr = InitializeDIO(FanPort);
 
     // IoT Hubのクライアントハンドルを作成し、memsetで初期化
     static IOTHUB_DEVICE_CLIENT_LL_HANDLE iothubClient;
@@ -39,12 +45,12 @@ int main(void)
         return -1;
     }
     
-    // "DirectMethodCall"関数をDirect Methodが実行された時の
-    // コールバック関数として登録
-    IoTHubDeviceClient_LL_SetDeviceMethodCallback(iothubClient, DirectMethodCall, NULL);
+    // "DirectMethodCall"関数をDirect Methodが実行された時のコールバック関数として登録
+    // 引数にDIOへのファイルディスクリプタを渡す
+    IoTHubDeviceClient_LL_SetDeviceMethodCallback(iothubClient, DirectMethodCall, fdptr);
 
     while (true) {
-        Log_Debug("running...\n");
+        Log_Debug(".");
 
         IoTHubDeviceClient_LL_DoWork(iothubClient);
 
@@ -86,22 +92,37 @@ bool AzureIoTHubSetup(IOTHUB_DEVICE_CLIENT_LL_HANDLE* client) {
 /// <param name="responsePayload"></param>
 /// <param name="responsePayloadSize"></param>
 /// <returns></returns>
-static int DirectMethodCall(const char* methodName, const char* payload, size_t payloadSize, char** responsePayload, size_t* responsePayloadSize)
+static int DirectMethodCall(const char* methodName, const char* payload, size_t payloadSize, char** responsePayload, size_t* responsePayloadSize, void* userContextCallback)
 {
     *responsePayload = NULL;  // Reponse payload content.
     *responsePayloadSize = 0; // Response payload content size.
 
-    Log_Debug("\nDirect Method Called %s with payload %s\n", methodName, payload);
+    int diofd = (int)userContextCallback;
     int result = 202; // リクエストは受理されたが、まだ実行されていない
 
     if (strcmp(methodName, "FANon") == 0) {
         Log_Debug("FANon Method Called\n");
-        result = 200;
+        SetDIO(diofd, Active);
         static const char resetOkResponse[] =
             "{ \"success\" : true, \"message\" : \"%s\" }";
-        *responsePayload = GetHeapMessage(resetOkResponse, sizeof(resetOkResponse), "ON");
 
+        // "ON"文字列をレスポンスに渡すため、"resetOkResponse"に文字列に +2文字
+        *responsePayload = GetHeapMessage(resetOkResponse, sizeof(resetOkResponse) + 2, "ON");
         *responsePayloadSize = strlen(*responsePayload);
+
+        result = 200;
+    }
+    else if (strcmp(methodName, "FANoff") == 0) {
+        Log_Debug("FANoff Method Called\n");
+        SetDIO(diofd, Stop);
+        static const char resetOkResponse[] =
+            "{ \"success\" : true, \"message\" : \"%s\" }";
+
+        // "OFF"文字列をレスポンスに渡すため、"resetOkResponse"に文字列に +3文字
+        *responsePayload = GetHeapMessage(resetOkResponse, sizeof(resetOkResponse) + 3, "OFF");
+        *responsePayloadSize = strlen(*responsePayload);
+
+        result = 200;
     }
     return result;
 
@@ -131,4 +152,37 @@ static void* GetHeapMessage(const char* mssgFormat, size_t maxlength, ...) {
     va_end(args);
 
     return heapMessage;
+}
+
+
+/// <summary>
+/// DIO出力ポートを初期化する
+/// </summary>
+/// <param name="gpioId">DIOポート</param>
+/// <returns>GPIOへのfdポインタ</returns>
+int InitializeDIO(int gpioId) {
+    int LED = GPIO_OpenAsOutput(gpioId, GPIO_OutputMode_PushPull, GPIO_Value_High);
+    if (LED == -1) {
+        return NULL;
+    }
+
+    return LED;
+}
+
+
+/// <summary>
+/// DIO出力を設定する
+/// </summary>
+/// <param name="gpiofd"></param>
+/// <param name=""></param>
+/// <returns></returns>
+int SetDIO(int gpiofd, enum FanStatus status) {
+    if (status == Active) {
+        GPIO_SetValue(gpiofd, GPIO_Value_Low);
+    }
+    else if (status == Stop) {
+        GPIO_SetValue(gpiofd, GPIO_Value_High);
+    }
+
+    return gpiofd;
 }
