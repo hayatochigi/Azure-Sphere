@@ -6,7 +6,7 @@
   "CmdArgs": [],
   "Capabilities": {
     "AllowedApplicationConnections": [],
-    "AllowedConnections": [ "w-iothub-azsphere.azure-devices.net" ],
+    "AllowedConnections": [ "xxx.azure-devices.net" ],
     "AllowedTcpServerPorts": [ 1883, 8883 ]
   },
   "ApplicationType": "Default"

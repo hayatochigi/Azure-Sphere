@@ -9,8 +9,8 @@
 #include <time.h>
 #include <stdio.h>
 
-#define hubHostName "w-iothub-azsphere.azure-devices.net"
-#define ConnectionStr "HostName=w-iothub-azsphere.azure-devices.net;DeviceId=AzMT3620;SharedAccessKey=EKGzxjEFs0u0NlMmoRW/d7eZNR+xWN6DOjVmEJCd7Wk="
+#define hubHostName "xxx.azure-devices.net"
+#define ConnectionStr ""
 #define deviceId "AzMT3620"
 
 // *************** 関数宣言 *************** //
@@ -34,29 +34,27 @@ int main(void)
     }
 
     // "desired"プロパティが更新された際に通知を受け取り、どのコールバックを実行するかの設定
-    //IoTHubDeviceClient_LL_SetDeviceTwinCallback(iothubClient, twinCallback, NULL);
+    IoTHubDeviceClient_LL_SetDeviceTwinCallback(iothubClient, twinCallback, NULL);
 
-    int interaction = 0;
-
+    /************* reported用の処理 *************/
+    // reportedプロパティのためにjsonオブジェクトを作成
     JSON_Value* root_value = json_value_init_object();
     JSON_Object* root_object = json_value_get_object(root_value);
-    (void)json_object_set_string(root_object, "Prefecture", "Shimane");
+    // reportedは "Prefecture" = "Shimane"を新規に追加するように指定
+    (void)json_object_dotset_string(root_object, "Prefecture", "Shimane");
     char* reportstr = json_serialize_to_string(root_value);
     json_value_free(root_value);
+    
+    // SendReportedStateによってreportedプロパティを更新
+    IoTHubDeviceClient_LL_SendReportedState(iothubClient, (const unsigned char*)reportstr, strlen(reportstr), reportStatusCallback, NULL);
+    /**********************************************/
 
     while (true) {
-        if (IOTHUB_CLIENT_OK !=
-            IoTHubDeviceClient_LL_SendReportedState(iothubClient, (const unsigned char*)reportstr, strlen(reportstr), reportStatusCallback, NULL)
-            ) {
-            Log_Debug("Error at IoTHubDeviceClient_LL_SendReportedState\n");
-        }
-
-        Log_Debug("Reported: %s\n", reportstr);
+        Log_Debug("Running...\n");
 
         IoTHubDeviceClient_LL_DoWork(iothubClient);
 
         nanosleep(&Wait, NULL);
-        interaction++;
     }
 
     // 実際のアプリケーションではIoT Hubとの接続を解除する
