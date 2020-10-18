@@ -36,7 +36,7 @@ IoTHubDeviceClient_LL_SetDeviceMethodCallback(iothubClient, DirectMethodCall, NU
 ```
 
 4. ダイレクトメソッドを呼び出す  
-ここではPortal上から呼び出しているが、バックエンドアプリを別に作成して呼び出すことも可能。Portalから実行すると、以下のようにデバイスからのレスポンスを確認できる。
+ここではPortal上から呼び出しているが、バックエンドアプリを別に作成して呼び出すことも可能。Portalから実行すると、ON/OFFのコマンドに応じてMT3620上のLEDが点灯/消灯し、それぞれ以下のようにデバイスからのレスポンスを確認できる。
 
 <p align="center">
   <img width="240" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/DirectMethod.PNG">
