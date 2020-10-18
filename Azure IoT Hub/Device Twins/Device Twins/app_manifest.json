@@ -1,0 +1,13 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "AzureSphereHLCoreBlank1",
+  "ComponentId": "ae9032e5-f947-45e3-9bf2-4602f4a5228b",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "w-iothub-azsphere.azure-devices.net" ],
+    "AllowedTcpServerPorts": [ 1883, 8883 ]
+  },
+  "ApplicationType": "Default"
+}
