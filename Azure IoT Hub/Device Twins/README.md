@@ -100,5 +100,5 @@ IoT Hub上でdesiredプロパティを更新すると、デバイス上で最新
   <img width="240" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/DeviceTwins%20-%20Portal.PNG">
 </p>
 <p align="center">
-  <img width="600" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/DeviceTwins%20-%20VStudio.png">
+  <img width="800" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/DeviceTwins%20-%20VStudio.png">
 </p>
