@@ -23,7 +23,7 @@
               "SemanticType/Temperature"
             ],
             "displayName": {
-              "en": "荷物の温度"
+              "en": "Contents Temperature"
             },
             "name": "ContentsTemperature",
             "schema": "double",
