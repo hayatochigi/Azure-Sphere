@@ -1,0 +1,12 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "FileUpload",
+  "ComponentId": "cc817a3b-2469-4dc3-a3b1-4a4adccb74d7",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "MutableStorage": { "SizeKB": 8 }
+  },
+  "ApplicationType": "Default"
+}
