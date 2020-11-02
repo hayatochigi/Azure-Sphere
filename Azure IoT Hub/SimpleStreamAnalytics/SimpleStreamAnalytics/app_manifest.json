@@ -1,0 +1,13 @@
+﻿{
+  "SchemaVersion": 1,
+  "Name": "SimpleStreamAnalytics",
+  "ComponentId": "33daf4c4-05b8-4d0a-ad77-d6e8323ee121",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "xxx.azure-devices.net" ],
+    "Adc": [ "$ADC" ]
+  },
+  "ApplicationType": "Default"
+}
