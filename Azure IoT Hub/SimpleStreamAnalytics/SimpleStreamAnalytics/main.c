@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-#define ConnectionStr "xxx"
+#define ConnectionStr "HostName=xxx.azure-devices.net;DeviceId=azsphere;SharedAccessKey=xxx"
 #define RefVolt 2.5
 #define sampMaxVolt 2.5
 
@@ -20,6 +20,7 @@ char* CreateTelemetryMssg(int);
 
 // *****  Global ***** //
 static int BitDepth;
+static int MssgCounter = 0;
 // ******************* //
 
 int main(void)
@@ -126,14 +127,20 @@ char* CreateTelemetryMssg(int ADC_FileDes) {
     // ADCからの読み取り値を電圧 -> 文字列へ変換
     uint32_t value = 0;
     char buf[10];
+   
+    // JSONオブジェクトに温度情報を追加
+    snprintf(buf, sizeof(buf), "%d", MssgCounter);
+    (void)json_object_dotset_string(root_object, "MssgCount", buf);
+
     ADC_Poll(ADC_FileDes, 0, &value);
     float voltage = ((float)value * sampMaxVolt) / (float)((1 << BitDepth) - 1);
     snprintf(buf, sizeof(buf), "%f", voltage);
-
-    // JSONオブジェクトに温度情報を追加
     (void)json_object_dotset_string(root_object, "Temperature",buf);
     char* json_mssg = json_serialize_to_string(root_value);
     json_value_free(root_value);
+    
+    // カウンタをインクリメント
+    MssgCounter += 1;
 
     return json_mssg;
 }
