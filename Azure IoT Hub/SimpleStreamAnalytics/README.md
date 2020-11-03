@@ -1,5 +1,5 @@
 # Stream Analytics with Azure Sphere
-Azure Sphereから送信したテレメトリを[Stream Analytics](https://docs.microsoft.com/ja-jp/azure/stream-analytics/stream-analytics-introduction)のクエリによってフィルタし、条件にマッチしたテレメトリをBlobストレージへ保存する。
+Azure Sphereから送信したテレメトリを[Stream Analytics](https://docs.microsoft.com/ja-jp/azure/stream-analytics/stream-analytics-introduction)のクエリによってフィルタし、条件にマッチしたテレメトリをBlobストレージへ保存する。単純なフィルタのみでなく、Stream Analyticsに組み込まれた[Tumbling Window](https://docs.microsoft.com/ja-jp/stream-analytics-query/tumbling-window-azure-stream-analytics)などの組み込み関数を使用して、データの処理も可能となる。
 
 <p align="center">
   <img width="800" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/Simple%20Stream%20Analytics%20Arch.png">
@@ -12,17 +12,6 @@ Azure Sphereから送信したテレメトリを[Stream Analytics](https://docs.
     JSON_Value* root_value = json_value_init_object();
     JSON_Object* root_object = json_value_get_object(root_value);
 
-    // ADCからの読み取り値を電圧 -> 文字列へ変換
-    uint32_t value = 0;
-    char buf[10];
-   
-    // JSONオブジェクトに温度情報を追加
-    snprintf(buf, sizeof(buf), "%d", MssgCounter);
-    (void)json_object_dotset_string(root_object, "MssgCount", buf);
-
-    ADC_Poll(ADC_FileDes, 0, &value);
-    float voltage = ((float)value * sampMaxVolt) / (float)((1 << BitDepth) - 1);
-    snprintf(buf, sizeof(buf), "%f", voltage);
     (void)json_object_dotset_string(root_object, "Temperature",buf);
     char* json_mssg = json_serialize_to_string(root_value);
     json_value_free(root_value);
