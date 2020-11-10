@@ -1,5 +1,9 @@
 # Stream Analytics with Azure Sphere
-Azure Sphereから送信したテレメトリを[Stream Analytics](https://docs.microsoft.com/ja-jp/azure/stream-analytics/stream-analytics-introduction)のクエリによってフィルタし、条件にマッチしたテレメトリをBlobストレージへ保存する。単純なフィルタのみでなく、Stream Analyticsに組み込まれた[Tumbling Window](https://docs.microsoft.com/ja-jp/stream-analytics-query/tumbling-window-azure-stream-analytics)などの組み込み関数を使用して、データの処理も可能となる。
+Azure Sphereから送信したテレメトリを[Stream Analytics](https://docs.microsoft.com/ja-jp/azure/stream-analytics/stream-analytics-introduction)のクエリによってフィルタし、
+条件にマッチしたテレメトリをBlobストレージへ保存する。
+単純なフィルタのみでなく、Stream Analyticsに組み込まれた[Tumbling Window](https://docs.microsoft.com/ja-jp/stream-analytics-query/tumbling-window-azure-stream-analytics)などの組み込み関数を使用して、データの処理も可能となる。
+
+本来はEvent Hubをかましたいんだけど、コストの関係でEvent Hubは未使用。。。
 
 <p align="center">
   <img width="800" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/Simple%20Stream%20Analytics%20Arch.png">
@@ -22,4 +26,20 @@ Stream Analyticsの出力設定で、Blobストレージにどのようなフォ
 <p align="center">
   <img width="800" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/Stream_to_Blob.PNG">
 </p>
+
+## IoT Hubのコンシューマーグループ
+IoT HubとStream Analyticsは、IoT Hubのコンシューマーグループを介してデータを受け渡す。
+[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-devguide-messages-read-builtin)
+
+```
+コンシューマーグループって2つ作ると、複製されたデータが2つ存在するの？
+```
+確認するとそのようで、Azure Sphereからインクリメント値をテレメトリとして送っているのだが、まったく同じデータがBlobに保存されている。
+<p align="center">
+  <img width="600" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/stream_iothub_cold.PNG">
+</p>
+<p align="center">
+  <img width="600" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/stream_iothub_hot.PNG">
+</p>
+
 

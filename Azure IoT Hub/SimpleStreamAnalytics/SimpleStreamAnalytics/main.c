@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-#define ConnectionStr "HostName=xxx.azure-devices.net;DeviceId=azsphere;SharedAccessKey=xxx"
+#define ConnectionStr "xxx"
 #define RefVolt 2.5
 #define sampMaxVolt 2.5
 
