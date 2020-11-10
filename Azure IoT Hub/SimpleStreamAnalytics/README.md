@@ -28,13 +28,13 @@ Stream Analyticsの出力設定で、Blobストレージにどのようなフォ
 </p>
 
 ## IoT Hubのコンシューマーグループ
-IoT HubとStream Analyticsは、IoT Hubのコンシューマーグループを介してデータを受け渡す。
+IoT HubとStream Analyticsは、IoT Hubのコンシューマーグループを介してデータを受け渡す。  
 [デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-devguide-messages-read-builtin)
 
 ```
 コンシューマーグループって2つ作ると、複製されたデータが2つ存在するの？
 ```
-確認するとそのようで、Azure Sphereからインクリメント値をテレメトリとして送っているのだが、まったく同じデータがBlobに保存されている。
+Steram Analyticsで2つのコンシューマーグループ入力を、異なるBlobパスへ保存してみた。同じデータがBlobに保存されている様子が確認できる。
 <p align="center">
   <img width="600" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/stream_iothub_cold.PNG">
 </p>
