@@ -1,0 +1,40 @@
+{
+  "Metadata": {
+    "Type": "Azure Sphere Hardware Definition",
+    "Version": 1
+  },
+  "Description": {
+    "Name": "mt3620_rdb",
+    "MainCoreHeaderFileTopContent": [
+      "/* Copyright (c) <vendor name> All rights reserved.",
+      "   <vendor licensing information, if any> */",
+      "",
+      "// This header contains the peripheral pinout definitions for the",
+      "// <name of board or module>"
+    ]
+  },
+  "Imports": [
+    { "Path": "mt3620_rdb.json" }
+  ],
+  // Pathは相対パスである必要がある。
+  // "mt3620_rdb.json"は、"C:\Program Files (x86)\Microsoft Azure Sphere SDK\HardwareDefinitions"にソースがある。
+  "Peripherals": [
+    {
+      "Name": "ADC",
+      "Type": "Adc",
+      "Mapping": "MT3620_RDB_ADC_CONTROLLER0",
+      "Comment": "ADC Controller"
+    },
+    {
+      "Name": "AI0",
+      "Type": "Adc",
+      "Mapping": "MT3620_ADC_CHANNEL0",
+      "Comment": "ADC Channel"
+    }
+  ]
+}
+
+// ハードウェア定義ファイルの作成が完了したら、
+// azsphere hardware-definition generate-header --input hardware_definition.json
+// コマンドを使用してヘッダを生成する。
+// https://docs.microsoft.com/ja-jp/azure-sphere/hardware/hardware-abstraction

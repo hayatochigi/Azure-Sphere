@@ -1,0 +1,13 @@
+{
+  "SchemaVersion": 1,
+  "Name": "TimeSeriesInsight",
+  "ComponentId": "3bde2688-e51f-484e-b05e-abc6c6e0ea3d",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "AllowedConnections": [ "xxx.azure-devices.net" ],
+    "Adc": ["$ADC"]
+  },
+  "ApplicationType": "Default"
+}
