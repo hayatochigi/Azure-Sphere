@@ -1,5 +1,5 @@
 # Azure Sphere IoT Hub Example
-このサンプルは、Device Provisioning Serviceを介してIoT Hubへ接続し、MQTTプロトコルを用いて5秒毎にメッセージをIoT Hubへ送信する。
+このサンプルは、Device Provisioning Serviceを介してIoT Hubへ接続し、5秒毎にテレメトリをIoT Hubへ送信する。
 
 ## 1. Azureセットアップ
 Azure IoT HubとDevice Provisioning Service (DPS)をセットアップする。デバイスはまずDPSに問い合わせを行い、DPSは接続先IoT Hubの情報をデバイスへ返す。それを元にIoT Hubへデバイスが接続する。
