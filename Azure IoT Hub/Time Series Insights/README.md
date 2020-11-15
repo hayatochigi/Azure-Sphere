@@ -7,3 +7,5 @@ TSIは時系列でデータを整理するので、デバイスからのテレ�
   <img width="600" src="https://github.com/hayatochigi/images/blob/master/IoT%20Hub%20Example/TSI.PNG">
 </p>
 
+サンプルといっても、やっていることは他のAzure Sphereサンプルと変わらなくて、2種類のデータをJSON形式で送っているに過ぎない。
+
