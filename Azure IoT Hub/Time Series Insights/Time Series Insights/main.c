@@ -4,13 +4,12 @@
 #include "iothubtransportmqtt.h"
 
 #include "parson.h"
-#include "filter.h"
 #include "hw/hardware_definition.h"
 
 #include <stdbool.h>
 #include <time.h>
 
-#define ConnectionStr "xxx"
+#define ConnectionStr "HostName=xxx"
 #define RefVolt 2.5
 #define sampMaxVolt 2.5
 
@@ -132,11 +131,14 @@ char* CreateTelemetryMssg(int ADC_FileDes) {
     // ADC値を取得
     ADC_Poll(ADC_FileDes, 0, &value);
     float voltage = ((float)value * sampMaxVolt) / (float)((1 << BitDepth) - 1);
-    voltage = fir_filter(voltage);
 
-    // JSONオブジェクトに温度情報を追加
+    // JSONオブジェクトに電圧情報を追加
     snprintf(buf, sizeof(buf), "%f", voltage);
-    (void)json_object_dotset_string(root_object, "Temperature", buf);
+    (void)json_object_dotset_string(root_object, "myVolt", buf);
+    // JSONオブジェクトに電流情報を追加
+    snprintf(buf, sizeof(buf), "%f", voltage * 2.5);
+    (void)json_object_dotset_string(root_object, "myCurr", buf);
+
     char* json_mssg = json_serialize_to_string(root_value);
     json_value_free(root_value);
 

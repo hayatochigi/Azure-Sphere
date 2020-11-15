@@ -12,7 +12,7 @@ azsphere_configure_api(TARGET_API_SET "7")
 add_executable (${PROJECT_NAME} main.c)
 target_link_libraries (${PROJECT_NAME} applibs pthread gcc_s c azureiot sub_module)
 
-add_library(sub_module json/parson.c json/parson.h filter/filter.c filter/filter.h)
+add_library(sub_module json/parson.c json/parson.h)
 include_directories(${PROJECT_NAME} json filter)
 target_include_directories(${PROJECT_NAME} PUBLIC ${AZURE_SPHERE_API_SET_DIR}/usr/include/azureiot ${AZURE_SPHERE_API_SET_DIR}/usr/include/azure_prov_client)
 target_compile_definitions(${PROJECT_NAME} PUBLIC AZURE_IOT_HUB_CONFIGURED)
