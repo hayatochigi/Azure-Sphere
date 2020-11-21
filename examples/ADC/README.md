@@ -12,7 +12,7 @@
 ### 1. ハードウェア定義ヘッダーファイルを作成する
 1. プロジェクトに"Hardware"フォルダを作成する
 2. Hardwareフォルダ内に、"hardware_definition.json"ファイルを作成する
-3. [ハードウェア定義](htt\/ｐｓps://docs.microsoft.com/ja-jp/azure-sphere/hardware/hardware-abstraction)を参考に、JSONファイルを編集する
+3. [ハードウェア定義](https://docs.microsoft.com/ja-jp/azure-sphere/hardware/hardware-abstraction)を参考に、JSONファイルを編集する
 4. Azure Sphere Developer Command Prompt から以下のコマンドを実行する
 ```
 azsphere hardware-definition generate-header --input hardware_definition.json
