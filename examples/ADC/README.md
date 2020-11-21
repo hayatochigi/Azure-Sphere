@@ -1,24 +1,32 @@
 # Azure Sphere Simple ADC Example
+サーミスタによって温度を測定するアプリケーション。erAzure SpheとMT3620のハードウェアサポートに関しては、複数のドキュメントがあるがADCが使えるのか結局よく分からなかった。このサンプルで、MT3620開発キットでADCによる電圧測定ができることを確認した。
 
-[���x�ȃA�v���P�[�V������ ADC ���g�p���� | Microsoft Azure](
-https://docs.microsoft.com/ja-jp/azure-sphere/app-development/adc)
+[Azure Sphere MT3620 開発キット](https://seeedjp.github.io/Wiki/MT3620/)
+```
+現状、Azure Sphere SDKはMT3620のADCやI2Cをサポートしていません。
+```
+こちらではサポートしている記述がある。[MT3620 reference development board (RDB) user guide](https://docs.microsoft.com/ja-jp/azure-sphere/hardware/mt3620-user-guide)
 
-## 1. ���\�z
+[高度なアプリケーションで ADC を使用する | Microsoft Azure](https://docs.microsoft.com/ja-jp/azure-sphere/app-development/adc)
 
-### 1. �n�[�h�E�F�A��`�w�b�_�[�t�@�C�����쐬����
-1. �v���W�F�N�g��"Hardware"�t�H���_���쐬����
-2. Hardware�t�H���_���ɁA"hardware_definition.json"�t�@�C�����쐬����
-3. [�n�[�h�E�F�A��`](https://docs.microsoft.com/ja-jp/azure-sphere/hardware/hardware-abstraction)���Q�l�ɁAJSON�t�@�C����ҏW����
-4. Azure Sphere Developer Command Prompt ����ȉ��̃R�}���h�����s����
+注意点として、 _開発キットのJ1はショートしておく必要がある。_ オープンでは、Pin1に外部から1.8Vのリファレンス電圧を入れなくては電圧が正常に測定できない。ショートすることで、内部の2.5Vリファレンスを使用し、測定値は期待したものになる。
+
+## 1. 環境構築
+
+### 1. ハードウェア定義ヘッダーファイルを作成する
+1. プロジェクトに"Hardware"フォルダを作成する
+2. Hardwareフォルダ内に、"hardware_definition.json"ファイルを作成する
+3. [ハードウェア定義](htt\/ｐｓps://docs.microsoft.com/ja-jp/azure-sphere/hardware/hardware-abstraction)を参考に、JSONファイルを編集する
+4. Azure Sphere Developer Command Prompt から以下のコマンドを実行する
 ```
 azsphere hardware-definition generate-header --input hardware_definition.json
 ```
-5. Hardware > inc > hw �t�H���_�ɁA�n�[�h�E�F�A��`�w�b�_�[�t�@�C�����������ꂽ���Ƃ��m�F����
+5. Hardware > inc > hw フォルダに、ハードウェア定義ヘッダーファイルが生成されたことを確認する
 
 
-### 2. �A�v���P�[�V�����}�j�t�F�X�g���L�q����
-1. app_manifest.json���J��
-2. "Capabilities"���ڂ�ADC��`��ǉ�����BAdc�̖��O�́A�n�[�h�E�F�A��`�w�b�_�[�t�@�C���ɒ�`�������̂��g�p����B
+### 2. アプリケーションマニフェストを記述する
+1. app_manifest.jsonを開く
+2. "Capabilities"項目にADC定義を追加する。Adcの名前は、ハードウェア定義ヘッダーファイルに定義したものを使用する。
 ```
 {
   "SchemaVersion": 1,
@@ -35,16 +43,16 @@ azsphere hardware-definition generate-header --input hardware_definition.json
 ```
 
 
-### 3. CMakeLists.txt��ҏW����
-CMakeLists.txt�Ɉȉ��̈ꕶ��ǋL����B
-�� ���ꂪ�Ȃ��ƁAmain.c����n�[�h�E�F�A��`�w�b�_�[�t�@�C�����Q�Ƃł��Ȃ�...
+### 3. CMakeLists.txtを編集する
+CMakeLists.txtに以下の一文を追記する。
+※ これがないと、main.cからハードウェア定義ヘッダーファイルが参照できない...
 ```
 azsphere_target_hardware_definition(${PROJECT_NAME} TARGET_DIRECTORY "Hardware" TARGET_DEFINITION "hardware_definition.json")
 ```
 
 
-## 2. �R�[�f�B���O����
-�Ⴆ�Έȉ��̂悤�ɋL�q���āA�G���[�Ȃ�����l���o�͂���邱�Ƃ��m�F����B
+## 2. コーディングする
+例えば以下のように記述して、エラーなく測定値が出力されることを確認する。
 ```
 #include <applibs/log.h>
 #include <applibs/adc.h>
