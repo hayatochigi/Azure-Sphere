@@ -1,11 +1,7 @@
 # Azure Sphere Simple ADC Example
-サーミスタによって温度を測定するアプリケーション。erAzure SpheとMT3620のハードウェアサポートに関しては、複数のドキュメントがあるがADCが使えるのか結局よく分からなかった。このサンプルで、MT3620開発キットでADCによる電圧測定ができることを確認した。
+サーミスタによって温度を測定するアプリケーション。erAzure SpheとMT3620のハードウェアサポートに関しては、複数のドキュメントがあるがADCが使えるのか結局よく分からなかった。[Azure Sphere MT3620 開発キット](https://seeedjp.github.io/Wiki/MT3620/)ではサポートしていない旨の記述があり、[MT3620 reference development board (RDB) user guide](https://docs.microsoft.com/ja-jp/azure-sphere/hardware/mt3620-user-guide)ではサポートしている記述がある。
 
-[Azure Sphere MT3620 開発キット](https://seeedjp.github.io/Wiki/MT3620/)
-```
-現状、Azure Sphere SDKはMT3620のADCやI2Cをサポートしていません。
-```
-こちらではサポートしている記述がある。[MT3620 reference development board (RDB) user guide](https://docs.microsoft.com/ja-jp/azure-sphere/hardware/mt3620-user-guide)
+このサンプルで、MT3620開発キットでADCによる電圧測定ができることを確認した。
 
 [高度なアプリケーションで ADC を使用する | Microsoft Azure](https://docs.microsoft.com/ja-jp/azure-sphere/app-development/adc)
 
