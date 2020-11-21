@@ -4,10 +4,16 @@
 #include <applibs/log.h>
 #include <applibs/adc.h>
 #include <time.h>
+#include <math.h>
 #include "hw/hardware_definition.h"
 
 #define RefVolt 2.5
 #define sampMaxVolt 2.5
+
+#define V0 (double)3.3
+#define R0 (double)10000
+#define B (double)3950
+#define T0 (double)298.15
 
 int main(void)
 {   
@@ -41,7 +47,9 @@ int main(void)
     while (1) {
         result = ADC_Poll(adcfd, 0, &value);
         float voltage = ((float)value * sampMaxVolt) / (float)((1 << BitDepth) - 1);
-        Log_Debug("Voltage is %.6f\n", voltage);
+        double R = (V0/(double)voltage - 1) * R0;
+        double temperature = 1/(1/B * log(R/R0) + (1/T0)) - 273.15;
+        Log_Debug("Temperature = %0.2f\n", temperature);
         nanosleep(&sleepTime, NULL);
 
     }
