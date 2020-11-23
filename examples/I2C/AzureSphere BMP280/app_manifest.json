@@ -1,0 +1,12 @@
+{
+  "SchemaVersion": 1,
+  "Name": "AzureSphere_BMP280",
+  "ComponentId": "dbe65f32-55dc-430e-a828-69c27509e888",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "AllowedApplicationConnections": [],
+    "I2cMaster": [ "$I2C_0" ]
+  },
+  "ApplicationType": "Default"
+}
