@@ -19,14 +19,14 @@
   // Pathは相対パスである必要がある。
   // "mt3620_rdb.json"は、"C:\Program Files (x86)\Microsoft Azure Sphere SDK\HardwareDefinitions"にソースがある。
 
-  //{"Name": "MT3620_RDB_HEADER4_ISU1_I2C", "Type": "I2cMaster", "Mapping": "MT3620_ISU1_I2C", "Comment": "ISU1 I2C is exposed on header 4, pin 5 (SDA) and pin 11 (SCL)"},
+  //{"Name": "MT3620_RDB_HEADER2_ISU0_I2C", "Type": "I2cMaster", "Mapping": "MT3620_ISU0_I2C", "Comment": "ISU0 I2C is exposed on header 2, pin 1 (SDA) and pin 7 (SCL)"},
 
   "Peripherals": [
     {
       "Name": "I2C_0",
       "Type": "I2cMaster",
-      "Mapping": "MT3620_RDB_HEADER2_ISU0_I2C",
-      "Comment": "ISU1 I2C is exposed on header 4, pin 5 (SDA) and pin 11 (SCL)"
+      "Mapping": "MT3620_ISU0_I2C",
+      "Comment": "ISU0 I2C is exposed on header 2, pin 1 (SDA) and pin 7 (SCL)"
     }
   ]
 }

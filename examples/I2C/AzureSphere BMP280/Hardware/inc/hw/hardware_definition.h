@@ -9,6 +9,6 @@
 #pragma once
 #include "mt3620_rdb.h"
 
-// ISU1 I2C is exposed on header 4, pin 5 (SDA) and pin 11 (SCL)
-#define I2C_0 MT3620_RDB_HEADER2_ISU0_I2C
+// ISU0 I2C is exposed on header 2, pin 1 (SDA) and pin 7 (SCL)
+#define I2C_0 MT3620_ISU0_I2C
 
