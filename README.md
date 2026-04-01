@@ -193,4 +193,4 @@ Device ID: 698A60985D6C44C68C8F986AC5222529E5751A8793C47189DB61F62CF66FF3A8FBD1A
 Device recovered successfully.
 
 ---
-以上でセットアップ完了。
+以上でセットアップ完了となる
